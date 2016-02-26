@@ -1,0 +1,8 @@
+@font-face{
+    font-family: 'Source Sans';
+    src:url('../font/SourceSansProRegular.eot');
+}
+@font-face {
+    font-family: 'Source Sans';
+    src:url(//:) format('No-IE-404'), url('../font/SourceSansProRegular.ttf') format('truetype');
+}
