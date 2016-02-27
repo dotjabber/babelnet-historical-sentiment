@@ -39,7 +39,7 @@ public class BabelNetService {
     }
 
     public List<SynsetElement> getCloud(String word) throws IOException {
-        List<BabelSynset> mainSynsets = babelNet.getSynsets(word, Language.EN);
+        List<BabelSynset> mainSynsets = babelNet.getSynsets(word, Language.EN, BabelPOS.NOUN, BabelSenseSource.WIKIDATA);
         List<SynsetElement> derivedSynsets = new ArrayList<>();
 
         BabelSynset mainSynset = mainSynsets.get(0);

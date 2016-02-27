@@ -120,7 +120,6 @@
         </dependency>
 
         <!-- tools and utils -->
-
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
@@ -139,96 +138,7 @@
             <version>${commons.math3.version}</version>
         </dependency>
 
-        <!-- database (postgres) -->
-        <dependency>
-            <groupId>postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>${postgresql.version}</version>
-        </dependency>
-
-        <!-- logging -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${org.slf4j.api.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>jcl-over-slf4j</artifactId>
-            <version>${org.slf4j.jcl.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>log4j-over-slf4j</artifactId>
-            <version>${org.slf4j.log4j.version}</version>
-        </dependency>
-
-        <!-- junit -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>de.julielab</groupId>
-            <artifactId>aliasi-lingpipe</artifactId>
-            <version>4.1.0</version>
-        </dependency>
-
-        <!-- wiki miner -->
-        <dependency>
-            <groupId>weka</groupId>
-            <artifactId>weka</artifactId>
-            <version>${weka.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>wikipedia</groupId>
-            <artifactId>wikipedia-miner</artifactId>
-            <version>${wikipedia.miner.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>berkeley</groupId>
-            <artifactId>berkeleydb-je</artifactId>
-            <version>${berkeleydb.je.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>maxent</groupId>
-            <artifactId>maxent</artifactId>
-            <version>${maxent.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>opennlp</groupId>
-            <artifactId>opennlp-tools</artifactId>
-            <version>${opennlp.tools.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>weka-wrapper</groupId>
-            <artifactId>weka-wrapper</artifactId>
-            <version>${weka.wrapper.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>trove</groupId>
-            <artifactId>trove</artifactId>
-            <version>${trove.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-core</artifactId>
-            <version>${org.apache.hadoop.version}</version>
-        </dependency>
-
-        <!-- babelnet dep -->
+        <!-- babelnet dependencies -->
         <dependency>
             <groupId>it.uniroma1.lcl</groupId>
             <artifactId>jlt</artifactId>
@@ -313,7 +223,6 @@
             <version>2.2.3</version>
         </dependency>
 
-
         <dependency>
             <groupId>org.apache.lucene</groupId>
             <artifactId>lucene-core</artifactId>
@@ -324,15 +233,9 @@
             <groupId>babelnet</groupId>
             <artifactId>babelnet</artifactId>
             <version>3.5.1</version>
+            <scope>system</scope>
+            <systemPath>{path_to_babelnet_jar_folder}/babelnet-api-3.5.1.jar</systemPath>
         </dependency>
-
-
-
-
-
-
-
-
 
         <dependency>
             <groupId>org.carrot2</groupId>
@@ -345,9 +248,6 @@
             <artifactId>morfologik-stemming</artifactId>
             <version>1.6.0</version>
         </dependency>
-
-
-
 
     </dependencies>
 
