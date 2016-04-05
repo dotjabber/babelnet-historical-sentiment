@@ -1,6 +1,7 @@
 package pl.dotjabber.sentiment.historical.service.babelnet;
 
 import it.uniroma1.lcl.babelfy.commons.BabelfyConfiguration;
+import it.uniroma1.lcl.babelfy.commons.BabelfyConstraints;
 import it.uniroma1.lcl.babelfy.commons.annotation.SemanticAnnotation;
 import it.uniroma1.lcl.babelfy.core.Babelfy;
 import it.uniroma1.lcl.jlt.util.Language;

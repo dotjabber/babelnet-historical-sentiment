@@ -10,14 +10,15 @@ public class AnnotationElement {
         if(line.contains(SEPARATOR)) {
             String elements[] = line.split(SEPARATOR);
 
-            phrase = elements[0];
-            synsetId = elements[1];
+            phrase = (elements.length > 0) ? elements[0] : null;
+            synsetId = (elements.length > 1) ? elements[1] : null;
         }
     }
 
     public AnnotationElement(String phrase, String synsetId) {
         this.synsetId = synsetId;
         this.phrase = phrase;
+
     }
 
     public String getPhrase() {

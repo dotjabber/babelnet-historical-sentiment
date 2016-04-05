@@ -10,6 +10,8 @@ import pl.dotjabber.sentiment.historical.service.SearchService;
 import pl.dotjabber.sentiment.historical.service.babelnet.BabelNetService;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import java.io.IOException;
 
@@ -17,8 +19,10 @@ import java.io.IOException;
 @Scope("view")
 public class SearchBean {
     private String query;
-    private String babelnetVersion;
     private boolean resultVisible;
+
+    private boolean error = false;
+    private String errorMessage;
 
     private SearchResponse response;
 
@@ -26,8 +30,15 @@ public class SearchBean {
     private SearchService searchService;
 
     public void search(ActionEvent actionEvent) throws IOException {
-        response = searchService.search(query.replace(" ", "_"));
-        setResultVisible(response != null);
+        try {
+            error = false;
+            response = searchService.search(query);
+            setResultVisible(response != null);
+
+        } catch(Throwable t) {
+            error = true;
+            errorMessage = t.getMessage();
+        }
     }
 
     public BarChartModel getChart() {
@@ -62,19 +73,19 @@ public class SearchBean {
         this.resultVisible = resultVisible;
     }
 
-    public String getBabelnetVersion() {
-        return babelnetVersion;
-    }
-
-    public void setBabelnetVersion(String babelnetVersion) {
-        this.babelnetVersion = babelnetVersion;
-    }
-
     public SearchResponse getResponse() {
         return response;
     }
 
     public void setResponse(SearchResponse response) {
         this.response = response;
+    }
+
+    public boolean getError() {
+        return error;
+    }
+
+    public String getErrorMessage() {
+        return errorMessage;
     }
 }

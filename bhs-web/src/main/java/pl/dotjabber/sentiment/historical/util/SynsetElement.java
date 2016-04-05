@@ -22,9 +22,12 @@ public class SynsetElement {
 
         if(line.contains(SEPARATOR)) {
             String elements[] = line.split(SEPARATOR);
-            synsetId = elements[0];
-            imageUrl = elements[1];
-            glosses.addAll(Arrays.asList(elements).subList(2, elements.length));
+
+            synsetId = (elements.length > 0) ? elements[0] : null;
+            imageUrl = (elements.length > 1) ? elements[1] : null;
+            if(elements.length > 2) {
+                glosses.addAll(Arrays.asList(elements).subList(2, elements.length));
+            }
         }
     }
 
