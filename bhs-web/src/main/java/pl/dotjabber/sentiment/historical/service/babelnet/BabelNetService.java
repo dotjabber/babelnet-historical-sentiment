@@ -7,6 +7,7 @@ import it.uniroma1.lcl.babelnet.data.BabelPointer;
 import it.uniroma1.lcl.babelnet.data.BabelSenseSource;
 import it.uniroma1.lcl.jlt.util.Language;
 import org.apache.commons.codec.language.bm.Lang;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import pl.dotjabber.sentiment.historical.util.SynsetElement;
@@ -29,6 +30,9 @@ public class BabelNetService {
     @Value("${babelnet.config.path}")
     private String configPath;
 
+    @Autowired
+    private BabelfyService babelfyService;
+
     @PostConstruct
     private void init() throws IOException {
         synsets = new SynsetMap(cachePath);
@@ -38,12 +42,19 @@ public class BabelNetService {
         babelNet = BabelNet.getInstance();
     }
 
-    public List<SynsetElement> getCloud(String word) throws IOException {
-        List<BabelSynset> mainSynsets = babelNet.getSynsets(word, Language.EN, BabelPOS.NOUN, BabelSenseSource.WIKIDATA);
+    public List<SynsetElement> getCloud(String phrase) throws IOException {
         List<SynsetElement> derivedSynsets = new ArrayList<>();
 
-        BabelSynset mainSynset = mainSynsets.get(0);
-        String mainId = getId(mainSynset.getId());
+        String mainId = babelfyService.getMainSynsetId(phrase);
+
+        // if babelfy did not handled it, then go raw.
+        if(mainId == null) {
+            List<BabelSynset> mainSynsets = babelNet.getSynsets(phrase, Language.EN, BabelPOS.NOUN, BabelSenseSource.WIKIDATA);
+            BabelSynset mainSynset = mainSynsets.get(0);
+            mainId = getId(mainSynset.getId());
+        }
+
+        BabelSynset mainSynset = babelNet.getSynset(new BabelSynsetID(mainId));
 
         if (!synsets.containsKey(mainId)) {
             SynsetElement mainElement = new SynsetElement(mainId, (mainSynset.getImage() != null) ? mainSynset.getImage().getURL() : "");
@@ -71,7 +82,7 @@ public class BabelNetService {
         List<SynsetElement> children = new ArrayList<>();
 
         BabelSynset parentSynset = babelNet.getSynset(new BabelSynsetID(parentId));
-        List<BabelSynsetIDRelation> edges = parentSynset.getEdges();
+        List<BabelSynsetIDRelation> edges = parentSynset.getEdges(BabelPointer.SEMANTICALLY_RELATED);
 
         for(int i = 0; i < ((edges.size() > 50) ? 50 : edges.size()); i++) {
             BabelSynsetIDRelation edge = edges.get(i);

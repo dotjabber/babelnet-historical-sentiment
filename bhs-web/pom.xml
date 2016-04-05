@@ -218,6 +218,12 @@
         </dependency>
 
         <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpmime</artifactId>
+            <version>4.3.6</version>
+        </dependency>
+
+        <dependency>
             <groupId>edu.mit</groupId>
             <artifactId>jwi</artifactId>
             <version>2.2.3</version>
@@ -229,12 +235,26 @@
             <version>4.9.0</version>
         </dependency>
 
+        <!--mvn install:install-file -Dfile=D:/BabelNet-API-3.5.1/babelnet-api-3.5.1.jar -DgroupId=babelnet -DartifactId=babelnet -Dversion=3.5.1 -Dpackaging=jar-->
+        <!--mvn install:install-file -Dfile=D:/BabelfyAPI-1.0/lib/babelfy-commons-1.0.jar -DgroupId=babelfy -DartifactId=babelfy-commons -Dversion=1.0 -Dpackaging=jar-->
+        <!--mvn install:install-file -Dfile=D:/BabelfyAPI-1.0/babelfy-online-1.0.jar -DgroupId=babelfy -DartifactId=babelfy -Dversion=1.0 -Dpackaging=jar-->
+
         <dependency>
             <groupId>babelnet</groupId>
             <artifactId>babelnet</artifactId>
             <version>3.5.1</version>
-            <scope>system</scope>
-            <systemPath>{path_to_babelnet_jar_folder}/babelnet-api-3.5.1.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>babelfy</groupId>
+            <artifactId>babelfy-commons</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>babelfy</groupId>
+            <artifactId>babelfy</artifactId>
+            <version>1.0</version>
         </dependency>
 
         <dependency>

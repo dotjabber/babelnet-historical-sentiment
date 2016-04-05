@@ -38,7 +38,9 @@
     <!-- Default Properties -->
     <util:properties id="defaultConfiguration">
         <prop key="babelnet.cache.path">${jboss.home.dir}/standalone/data/bhs/babelnet.cache</prop>
+        <prop key="babelfy.cache.path">${jboss.home.dir}/standalone/data/bhs/babelfy.cache</prop>
         <prop key="babelnet.config.path">${jboss.home.dir}/standalone/data/bhs/config/babelnet.properties</prop>
+        <prop key="babelfy.config.path">${jboss.home.dir}/standalone/data/bhs/config/babelfy.properties</prop>
 
         <prop key="sentiment.lexicon.positives.path">${jboss.home.dir}/standalone/data/bhs/sentiment/lexicon/positive-words.txt</prop>
         <prop key="sentiment.lexicon.negatives.path">${jboss.home.dir}/standalone/data/bhs/sentiment/lexicon/negative-words.txt</prop>

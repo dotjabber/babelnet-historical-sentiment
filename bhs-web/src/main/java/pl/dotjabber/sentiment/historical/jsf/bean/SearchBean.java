@@ -26,7 +26,7 @@ public class SearchBean {
     private SearchService searchService;
 
     public void search(ActionEvent actionEvent) throws IOException {
-        response = searchService.search(query);
+        response = searchService.search(query.replace(" ", "_"));
         setResultVisible(response != null);
     }
 
